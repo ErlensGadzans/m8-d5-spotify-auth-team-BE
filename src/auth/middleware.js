@@ -1,4 +1,4 @@
-const { verifyJWT } = require("../auth");
+const { verifyJWT } = require("../auth/index");
 const UserModel = require("../users/schema");
 
 const authorize = async (req, res, next) => {
