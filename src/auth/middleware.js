@@ -8,6 +8,8 @@ const authorize = async (req, res, next) => {
     const decoded = await verifyJWT(token);
     console.log(decoded);
     const user = await UserModel.findOne({ _id: decoded._id });
+    console.log(user);
+    next();
 
     if (!user) {
       throw new Error();
@@ -16,6 +18,7 @@ const authorize = async (req, res, next) => {
     req.user = user;
   } catch (error) {
     const err = new Error("Please authenticate");
+
     next(error);
   }
 };

@@ -20,12 +20,12 @@ UserSchema.statics.findByCredentials = async function (email, password) {
 };
 
 UserSchema.pre("save", async function (next) {
-  //pre saving authors data
+  //pre saving users data
   const user = this;
   const plainPW = user.password;
 
   if (user.isModified("password")) {
-    // modifying pasword of author
+    // modifying pasword of user
     user.password = await bcrypt.hash(plainPW, 12);
   }
   next();
