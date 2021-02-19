@@ -12,6 +12,7 @@ const authorize = async (req, res, next) => {
     }
     req.token = token;
     req.user = user;
+    next();
   } catch (error) {
     const err = new Error("Please authenticate");
     next(error);
