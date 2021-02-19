@@ -1,0 +1,34 @@
+{
+  "name": "m8-d5-spotify-auth-team-BE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+   
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErlensGadzans/m8-d5-spotify-auth-team-BE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErlensGadzans/m8-d5-spotify-auth-team-BE/issues"
+  },
+  "homepage": "https://github.com/ErlensGadzans/m8-d5-spotify-auth-team-BE#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "atob": "^2.1.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-list-endpoints": "^5.0.0",
+    "mongoose": "^5.11.17"
+  }
+}
