@@ -1,18 +1,21 @@
 const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-dotenv.config();
 const listEndpoints = require("express-list-endpoints");
+const cors = require("cors");
 const mongoose = require("mongoose");
-const usersRouter = require("./src/users");
-
+//Route
+const usersRouter = require("./users");
+const apiRouter = require("./crud");
+//Server
 const server = express();
-
 const port = process.env.PORT || 3007;
-
-server.use(express.json());
+//Middlewares
 server.use(cors());
+server.use(express.json());
+//
 server.use("/users", usersRouter);
+server.use("/deezer", apiRouter);
+//
+console.log(listEndpoints(server));
 
 mongoose
   .connect(process.env.MONGO_CONNECTION, {
