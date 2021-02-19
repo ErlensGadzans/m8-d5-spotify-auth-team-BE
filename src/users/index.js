@@ -5,10 +5,10 @@ const { authorize } = require("../auth/middleware");
 
 const usersRouter = express.Router();
 
-usersRouter.get("/", async (req, res, next) => {
+usersRouter.get("/", authorize, async (req, res, next) => {
   try {
-    const users = await UserModel.find();
-    res.send(users);
+    const user = await UserModel.find();
+    res.send(user);
   } catch (error) {
     console.log(error);
     next(error);
