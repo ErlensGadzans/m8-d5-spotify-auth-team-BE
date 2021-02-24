@@ -2,6 +2,7 @@ const express = require("express");
 const UserModel = require("../users/schema");
 const { authenticate } = require("../auth/");
 const { authorize } = require("../auth/middleware");
+const passport = require("passport");
 
 const usersRouter = express.Router();
 
