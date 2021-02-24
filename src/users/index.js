@@ -29,6 +29,7 @@ usersRouter.post("/register", async (req, res, next) => {
 usersRouter.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
+    console.log(req.body);
     const user = await UserModel.findByCredentials(email, password);
     const accessToken = await authenticate(user);
     res.send({ accessToken });
@@ -37,5 +38,20 @@ usersRouter.post("/login", async (req, res, next) => {
     next(error);
   }
 });
+
+//END PIONTS
+usersRouter.get(
+  "/googleLogin",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+usersRouter.get(
+  "/googleRedirect",
+  passport.authenticate("google"),
+  async (req, res, next) => {
+    res.cookie("accessToken", req.user.accessToken, { httpOnly: true });
+    res.redirect(process.env.LOCAL_URL + "accessToken" + req.user.accessToken); //FROM FRONTEND JS IS NOT ABLE CHECK CONTENT. PROTECTING TOKENS.
+  }
+);
 
 module.exports = usersRouter;
